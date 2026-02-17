@@ -3,8 +3,11 @@ const User = require('../models/userModel');
 
 exports.getUserByWallet = async (req, res) => {
     try {
-        const { wallet } = req.params;
-        const user = await User.findOne({ wallet });
+        const { walletAddress } = req.params;
+const user = await User.findOne({
+  walletAddress: walletAddress
+});
+
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
         }

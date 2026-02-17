@@ -4,7 +4,7 @@ const User = require('../models/userModel');
 const users = [
     {
         fullName: "SI Rajesh Kumar",
-        wallet: "0xe85fA867bC86E14775776320c1739570180F899C",
+        walletAddress: "0xe85fA867bC86E14775776320c1739570180F899C",
         role: "Collector",
         email: "rajesh.kumar@example.com",
         mobile: "9876543210",
@@ -13,7 +13,7 @@ const users = [
     },
     {
         fullName: "Inspector Anjali Sharma",
-        wallet: "0x43cB5f534A526a66B562bE6c94B96b7b47c5640a",
+        walletAddress: "0x43cB5f534A526a66B562bE6c94B96b7b47c5640a",
         role: "Analyst",
         email: "anjali.sharma@example.com",
         mobile: "9876543211",
@@ -22,7 +22,7 @@ const users = [
     },
     {
         fullName: "Inspector Vikram Singh",
-        wallet: "0x3040047887350358765cad4220632253A4b7915B",
+        walletAddress: "0x3040047887350358765cad4220632253A4b7915B",
         role: "Investigating Officer",
         email: "vikram.singh@example.com",
         mobile: "9876543212",
@@ -31,7 +31,7 @@ const users = [
     },
     {
         fullName: "Admin Priya Verma",
-        wallet: "0x8DA1A0CCEaA8744570B9662c09CDe87F9547773B",
+        walletAddress: "0x8DA1A0CCEaA8744570B9662c09CDe87F9547773B",
         role: "Admin",
         email: "priya.verma@example.com",
         mobile: "9876543213",
@@ -40,7 +40,7 @@ const users = [
     },
     {
         fullName: "SI Arjun Patel",
-        wallet: "0x4c7dF51f4586CAfeE92034fdF3bB000138B3c795",
+        walletAddress: "0x4c7dF51f4586CAfeE92034fdF3bB000138B3c795",
         role: "Collector",
         email: "arjun.patel@example.com",
         mobile: "9876543214",

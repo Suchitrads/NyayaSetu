@@ -20,7 +20,7 @@ export default function UserManagementPage() {
   const [searchWallet, setSearchWallet] = useState("");
   const [formData, setFormData] = useState({
     fullName: "",
-    wallet: "",
+    walletAddress: "",
     role: "",
     email: "",
     mobile: "",
@@ -71,7 +71,7 @@ export default function UserManagementPage() {
         toast.success("User added successfully");
         setFormData({
           fullName: "",
-          wallet: "",
+          walletAddress: "",
           role: "",
           email: "",
           mobile: "",
@@ -138,7 +138,7 @@ export default function UserManagementPage() {
                 {currentUsers.map((user, i) => (
                   <TableRow key={i}>
                     <TableCell>{user.fullName}</TableCell>
-                    <TableCell>{user.wallet}</TableCell>
+                    <TableCell>{user.walletAddress}</TableCell>
                     <TableCell>{user.role}</TableCell>
                     <TableCell>{user.email}</TableCell>
                     <TableCell>{user.mobile}</TableCell>
@@ -190,7 +190,7 @@ export default function UserManagementPage() {
           />
           <Input
             name="wallet"
-            value={formData.wallet}
+            value={formData.walletAddress}
             placeholder="Wallet"
             onChange={handleFormChange}
           />

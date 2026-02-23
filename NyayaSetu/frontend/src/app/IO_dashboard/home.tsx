@@ -23,7 +23,7 @@ export default function HomeDashboard() {
                     return;
                 }
                 const response = await axios.get(
-                    `http://localhost:5000/api/evidence/assigned-to-io`,
+                    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/evidence/assigned-to-io`,
                     { headers: { Authorization: `Bearer ${token}` } }
                 );
                 setEvidenceList(response.data.evidenceList);
@@ -40,7 +40,7 @@ export default function HomeDashboard() {
             setLoadingDetails(true);
             const token = localStorage.getItem("token");
             const response = await axios.get(
-                `http://localhost:5000/api/evidence/details/${evidenceId}`,
+                `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/evidence/details/${evidenceId}`,
                 { headers: { Authorization: `Bearer ${token}` } }
             );
             // Defensive: Ensure all expected fields exist

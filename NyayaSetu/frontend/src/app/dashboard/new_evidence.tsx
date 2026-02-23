@@ -103,7 +103,7 @@ export default function AddEvidence() {
 
     useEffect(() => {
         // Fetch all users
-        axios.get(`${process.env.BASE_URL}/api/users`)
+        axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users`)
             .then(response => {
                 setUsers(response.data);
             })
@@ -116,7 +116,7 @@ export default function AddEvidence() {
         if (token) {
             const decodedToken = jwtDecode(token);
             setCollectorWallet(decodedToken.wallet);
-            axios.get(`${process.env.BASE_URL}/api/users/wallet/${decodedToken.wallet}`)
+            axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/wallet/${decodedToken.wallet}`)
                 .then(response => {
                     setCollectorName(response.data.fullName);
                 })
@@ -297,7 +297,7 @@ export default function AddEvidence() {
 
         try {
             const token = localStorage.getItem('token');
-            const response = await axios.post(`${process.env.BASE_URL}/api/evidence/add`, evidenceData, {
+            const response = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/evidence/add`, evidenceData, {
                 headers: {
                     'Authorization': token,
                     'Content-Type': 'application/json'

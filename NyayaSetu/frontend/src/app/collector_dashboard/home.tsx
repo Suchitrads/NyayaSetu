@@ -15,7 +15,7 @@ export default function CollectorHome() {
         // Fetch recent evidence collected by this collector
         const fetchEvidence = async () => {
             try {
-                const response = await axios.get(`${process.env.BASE_URL}/api/evidence/recent`, {
+                const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/evidence/recent`, {
                     headers: {
                         "Authorization": `Bearer ${localStorage.getItem("token")}`
                     }
@@ -29,7 +29,7 @@ export default function CollectorHome() {
         // Fetch evidence summary/status counts
         const fetchEvidenceSummary = async () => {
             try {
-                const response = await axios.get(`${process.env.BASE_URL}/api/evidence/summary`, {
+                const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/evidence/summary`, {
                     headers: {
                         "Authorization": `Bearer ${localStorage.getItem("token")}`
                     }

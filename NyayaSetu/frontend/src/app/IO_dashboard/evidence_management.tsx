@@ -40,7 +40,7 @@ export default function EvidencePage() {
   const fetchEvidenceData = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get(`${process.env.BASE_URL}/api/evidence`, {
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/evidence`, {
         headers: { 'Authorization': token, 'Cache-Control': 'no-cache' }
       });
       setEvidenceData(response.data);
@@ -69,7 +69,7 @@ export default function EvidencePage() {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.post(`${process.env.BASE_URL}/api/users/validate-aadhaar`, {
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/validate-aadhaar`, {
         aadhaar: aadhaarToTransfer.trim()
       }, {
         headers: { 'Authorization': token }
@@ -99,7 +99,7 @@ export default function EvidencePage() {
     const token = localStorage.getItem('token');
     
     // 1️⃣ Perform the actual evidence transfer
-    const response = await axios.post(`${process.env.BASE_URL}/api/evidence/transfer`, {
+    const response = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/evidence/transfer`, {
       evidenceId: selectedEvidence.evidenceId,
       aadhaar: aadhaarToTransfer.trim()
     }, {
@@ -107,7 +107,7 @@ export default function EvidencePage() {
     });
 
     // ✅ 2️⃣ Immediately store the transfer record in your database
-    await axios.post(`${process.env.BASE_URL}/api/evidence/record-transfer`, {
+    await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/evidence/record-transfer`, {
       evidenceId: selectedEvidence.evidenceId,
       transferredToAadhaar: aadhaarToTransfer.trim(),
       caseId: selectedEvidence.caseId,
@@ -159,7 +159,7 @@ export default function EvidencePage() {
     }
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get(`${process.env.BASE_URL}/api/evidence/${searchEvidenceId}`, {
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/evidence/${searchEvidenceId}`, {
         headers: { 'Authorization': token }
       });
       setEvidenceData([response.data]);

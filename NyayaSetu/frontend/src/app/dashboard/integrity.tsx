@@ -102,7 +102,7 @@ const checkIntegrity = async () => {
         setIsLoading(true);
         setVerifying(true);
         const token = localStorage.getItem("token");
-        const baseUrl = process.env.BASE_URL;
+        const baseUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
         console.log("Calling backend...", baseUrl);
         console.log("token:", token);
         const url = `${baseUrl}/api/integrity/checkIntegrity?evidenceId=${encodeURIComponent(evidenceId.trim())}&fileHash=${encodeURIComponent(shaValue)}`;

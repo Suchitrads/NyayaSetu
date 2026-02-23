@@ -29,7 +29,7 @@ export default function TransferredEvidencePage() {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.get(
-        `${process.env.BASE_URL}/api/evidence/transferred-to-analyst`,
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/evidence/transferred-to-analyst`,
         { headers: { Authorization: token } }
       );
       setEvidenceList(response.data.evidenceList || []);

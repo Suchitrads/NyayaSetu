@@ -21,7 +21,7 @@ function chunkArray(arr, n) {
 const saveAnalysisResult = async (fileName, analysisType, result, evidenceId) => {
   try {
     const analystWallet = localStorage.getItem("wallet") || "";
-    await fetch(`${process.env.BASE_URL}/api/analysis/result`, {
+    await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/analysis/result`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -66,7 +66,7 @@ export default function Analysis() {
     }
     try {
         const token = localStorage.getItem("token");
-        const res = await fetch(`${process.env.BASE_URL}/api/evidence/${evidenceId.trim()}`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/evidence/${evidenceId.trim()}`, {
             headers: {
                 "Authorization": `Bearer ${token}`
             }

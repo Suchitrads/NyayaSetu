@@ -34,7 +34,7 @@ export default function ReportPage() {
     useEffect(() => {
         if (chainOfCustody && chainOfCustody.length > 0) {
             const analystAadhaar = chainOfCustody[0].transferredToAadhaar;
-            fetch(`http://localhost:5000/api/users/by-aadhaar/${analystAadhaar}`, {
+            fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/by-aadhaar/${analystAadhaar}`, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
                 },
@@ -55,7 +55,7 @@ export default function ReportPage() {
             if (evidenceList && evidenceList.length > 0) {
                 for (const evidence of evidenceList) {
                     const integrityResponse = await fetch(
-                        `http://127.0.0.1:5000/api/integrity/${evidence.evidenceId}`,
+                        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/integrity/${evidence.evidenceId}`,
                         {
                             headers: {
                                 Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -81,7 +81,7 @@ export default function ReportPage() {
             if (evidenceList && evidenceList.length > 0) {
                 for (const evidence of evidenceList) {
                     const imagingResponse = await fetch(
-                        `http://127.0.0.1:5000/api/imaging-log/${evidence.evidenceId}`,
+                        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/imaging-log/${evidence.evidenceId}`,
                         {
                             headers: {
                                 Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -107,7 +107,7 @@ export default function ReportPage() {
             if (evidenceList && evidenceList.length > 0) {
                 for (const evidence of evidenceList) {
                     const analysisResponse = await fetch(
-                        `http://127.0.0.1:5000/api/analysis/${evidence.evidenceId}`,
+                        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/analysis/${evidence.evidenceId}`,
                         {
                             headers: {
                                 Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -198,7 +198,7 @@ ${(analysisResults || []).map(a =>
         );
         setSummary(response.data.summary);
         await axios.put(
-            `http://localhost:5000/api/cases/${caseObj.caseId}/summary`,
+            `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/cases/${caseObj.caseId}/summary`,
             { summary: response.data.summary },
             {
                 headers: {
@@ -216,7 +216,7 @@ ${(analysisResults || []).map(a =>
     const fetchCasesWithEvidence = async () => {
         try {
             setLoading(true);
-            const casesResponse = await fetch("http://127.0.0.1:5000/api/cases", {
+            const casesResponse = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/cases`, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
                 },
@@ -230,7 +230,7 @@ ${(analysisResults || []).map(a =>
             const casesData = await casesResponse.json();
             const evidenceRequests = casesData.map(async (caseItem) => {
                 const evidenceResponse = await fetch(
-                    `http://127.0.0.1:5000/api/evidences/${caseItem.caseId}`,
+                    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/evidences/${caseItem.caseId}`,
                     {
                         headers: {
                             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -269,7 +269,7 @@ ${(analysisResults || []).map(a =>
 
             // Fetch case details
             const caseResponse = await fetch(
-                `http://127.0.0.1:5000/api/cases/${caseId}`,
+                `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/cases/${caseId}`,
                 {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -285,7 +285,7 @@ ${(analysisResults || []).map(a =>
 
             // Fetch evidence list
             const evidenceResponse = await fetch(
-                `http://127.0.0.1:5000/api/evidences/${caseId}`,
+                `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/evidences/${caseId}`,
                 {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -302,7 +302,7 @@ ${(analysisResults || []).map(a =>
 
             // Fetch chain of custody
             const chainResponse = await fetch(
-                `http://localhost:5000/api/transfers/collector-to-analyst/${caseId}`,
+                `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/transfers/collector-to-analyst/${caseId}`,
                 {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -319,7 +319,7 @@ ${(analysisResults || []).map(a =>
 
             // Fetch analyst to IO transfers
             const analystToIOResponse = await fetch(
-                `http://localhost:5000/api/transfers/analyst-to-io/${caseId}`,
+                `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/transfers/analyst-to-io/${caseId}`,
                 {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("token")}`,

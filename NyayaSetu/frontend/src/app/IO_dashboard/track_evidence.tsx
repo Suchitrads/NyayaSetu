@@ -20,7 +20,7 @@ export default function TrackEvidencePage() {
 
         try {
             const token = localStorage.getItem("token");
-            const response = await axios.get(`${process.env.BASE_URL}/api/evidence/logs/${evidenceId}`, {
+            const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/evidence/logs/${evidenceId}`, {
                 headers: { Authorization: token, "Cache-Control": "no-cache" },
             });
             setLogs(response.data);

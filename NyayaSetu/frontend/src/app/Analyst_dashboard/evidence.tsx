@@ -45,7 +45,7 @@ export default function EvidencePage() {
       const aadhaar = getAadhaarFromToken();
 
       const response = await axios.get(
-        `${process.env.BASE_URL}/api/evidence/transferred-to-analyst`,
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/evidence/transferred-to-analyst`,
         { headers: { Authorization: token } }
       );
 
@@ -64,7 +64,7 @@ export default function EvidencePage() {
     try {
         const token = localStorage.getItem("token");
         const res = await axios.get(
-            `${process.env.BASE_URL}/api/evidence/details/${evidence.evidenceId}`,
+            `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/evidence/details/${evidence.evidenceId}`,
             { headers: { Authorization: token } }
         );
 
@@ -110,7 +110,7 @@ export default function EvidencePage() {
     try {
         const token = localStorage.getItem("token");
         const response = await axios.post(
-            `${process.env.BASE_URL}/api/users/validate-investigation-officer-aadhaar`,
+            `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/validate-investigation-officer-aadhaar`,
             { aadhaar },
             { headers: { Authorization: token } }
         );
@@ -134,7 +134,7 @@ const handleTransferSubmit = async () => {
         const token = localStorage.getItem("token");
 
         await axios.post(
-            `${process.env.BASE_URL}/api/evidence/transfer-to-io`,
+            `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/evidence/transfer-to-io`,
             {
                 evidenceId: selectedEvidence.evidenceId,
                 aadhaar: aadhaarToTransfer.trim(),

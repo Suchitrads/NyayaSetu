@@ -20,7 +20,7 @@ router.get('/', async (req, res) => {
 });
 
 // Get user by wallet address
-router.get('/wallet/:wallet', userController.getUserByWallet);
+router.get('/wallet/:walletAddress', userController.getUserByWallet);
 
 // Create user
 router.post('/', userController.createUser);

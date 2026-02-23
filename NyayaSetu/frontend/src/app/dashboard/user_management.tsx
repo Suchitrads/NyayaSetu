@@ -34,7 +34,7 @@ export default function UserManagementPage() {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/users");
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users`);
       setUsers(response.data);
     } catch {
       toast.error("Failed to fetch users");
@@ -52,7 +52,7 @@ export default function UserManagementPage() {
       return;
     }
     try {
-      const response = await axios.get(`http://localhost:5000/api/users/wallet/${searchWallet}`);
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/wallet/${searchWallet}`);
       setUsers([response.data]);
       setCurrentPage(1);
     } catch {
@@ -66,7 +66,7 @@ export default function UserManagementPage() {
 
   const handleAddUser = async () => {
     try {
-      const response = await axios.post("http://localhost:5000/api/users", formData);
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users`, formData);
       if (response.status === 201) {
         toast.success("User added successfully");
         setFormData({
@@ -189,7 +189,7 @@ export default function UserManagementPage() {
             onChange={handleFormChange}
           />
           <Input
-            name="wallet"
+            name="walletAddress"
             value={formData.walletAddress}
             placeholder="Wallet"
             onChange={handleFormChange}

@@ -33,7 +33,7 @@ export default function Imaging() {
     }
 
     const token = localStorage.getItem("token");
-    const baseUrl = process.env.BASE_URL;
+    const baseUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
 
     try {
       const res = await fetch(`${baseUrl}/api/evidence/${evidenceId.trim()}`, {
@@ -166,7 +166,7 @@ const logImagingAction = async (
   evidenceId?: string
 ) => {
   const token = localStorage.getItem("token");
-  const baseUrl = process.env.BASE_URL;
+  const baseUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
   try {
     const res = await fetch(`${baseUrl}/api/imaging-log`, {
       method: "POST",

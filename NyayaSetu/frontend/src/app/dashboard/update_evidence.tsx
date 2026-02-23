@@ -103,7 +103,7 @@ export default function UpdateEvidence() {
 
     useEffect(() => {
         // Fetch all users
-        axios.get(`${process.env.BASE_URL}/api/users`)
+        axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users`)
             .then(response => {
                 setUsers(response.data);
             })
@@ -116,7 +116,7 @@ export default function UpdateEvidence() {
         if (token) {
             const decodedToken = jwtDecode(token);
             setCollectorWallet(decodedToken.wallet);
-            axios.get(`${process.env.BASE_URL}/api/users/wallet/${decodedToken.wallet}`)
+            axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/wallet/${decodedToken.wallet}`)
                 .then(response => {
                     setCollectorName(response.data.fullName);
                 })
@@ -213,7 +213,7 @@ export default function UpdateEvidence() {
 
         try {
             const token = localStorage.getItem('token');
-            const response = await axios.get(`${process.env.BASE_URL}/api/evidence/${evidenceId}`, {
+            const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/evidence/${evidenceId}`, {
                 headers: {
                     'Authorization': token
                 }
@@ -305,7 +305,7 @@ const handleSubmit = async (e) => {
     };
 
     try {
-        const response = await axios.put(`${process.env.BASE_URL}/api/evidence/${evidenceId}`, evidenceData, {
+        const response = await axios.put(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/evidence/${evidenceId}`, evidenceData, {
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'

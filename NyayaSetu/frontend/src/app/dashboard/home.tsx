@@ -12,7 +12,7 @@ export default function HomeDashboard() {
     useEffect(() => {
         const fetchCases = async () => {
             try {
-                const response = await axios.get(`${process.env.BASE_URL}/api/cases/recent`, {
+                const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/cases/recent`, {
                     headers: {
                         "Authorization": `Bearer ${localStorage.getItem("token")}`
                     }
@@ -25,7 +25,7 @@ export default function HomeDashboard() {
 
         const fetchCaseSummary = async () => {
             try {
-                const response = await axios.get(`${process.env.BASE_URL}/api/cases/summary`, {
+                const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/cases/summary`, {
                     headers: {
                         "Authorization": `Bearer ${localStorage.getItem("token")}`
                     }

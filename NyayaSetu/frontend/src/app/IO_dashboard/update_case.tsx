@@ -33,7 +33,7 @@ export default function UpdateCasePage() {
     useEffect(() => {
         const fetchOfficers = async () => {
             try {
-                const response = await axios.get(`${process.env.BASE_URL}/api/officers`, {
+                const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/officers`, {
                     headers: {
                         "Authorization": `Bearer ${localStorage.getItem("token")}`
                     }
@@ -56,7 +56,7 @@ export default function UpdateCasePage() {
 
         try {
             const token = localStorage.getItem('token');
-            const response = await axios.get(`${process.env.BASE_URL}/api/cases/${caseId}`, {
+            const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/cases/${caseId}`, {
                 headers: {
                     'Authorization': token
                 }
@@ -158,7 +158,7 @@ export default function UpdateCasePage() {
         };
 
         try {
-            const response = await fetch(`${process.env.BASE_URL}/api/cases/${caseId}`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/cases/${caseId}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",

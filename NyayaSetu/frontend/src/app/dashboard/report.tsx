@@ -20,7 +20,7 @@ export default function ReportPage() {
     const fetchCasesWithEvidence = async () => {
         try {
             setLoading(true);
-            const casesResponse = await fetch("http://127.0.0.1:5000/api/cases", {
+            const casesResponse = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/cases`, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
                 },
@@ -53,7 +53,7 @@ export default function ReportPage() {
 
             // Fetch case details (including summary)
             const caseResponse = await fetch(
-                `http://127.0.0.1:5000/api/cases/${caseId}`,
+                `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/cases/${caseId}`,
                 {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -66,7 +66,7 @@ export default function ReportPage() {
             }
             const caseData = await caseResponse.json();
             setSelectedCase(caseData);
-            await fetch("http://127.0.0.1:5000/api/log-summary", {
+            await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/log-summary`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

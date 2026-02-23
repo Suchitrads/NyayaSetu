@@ -29,7 +29,7 @@ export default function RegisterNewCasePage() {
     useEffect(() => {
         const fetchOfficers = async () => {
             try {
-                const response = await axios.get(`${process.env.BASE_URL}/api/officers`, {
+                const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/officers`, {
                     headers: {
                         "Authorization": `Bearer ${localStorage.getItem("token")}`
                     }
@@ -120,7 +120,7 @@ export default function RegisterNewCasePage() {
         };
 
         try {
-            const response = await fetch(`${process.env.BASE_URL}/api/cases`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/cases`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

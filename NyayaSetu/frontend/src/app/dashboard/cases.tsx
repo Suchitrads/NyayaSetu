@@ -23,7 +23,7 @@ export default function CasesPage() {
 
     const fetchCases = async () => {
         try {
-            const response = await fetch(`${process.env.BASE_URL}/api/cases`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/cases`, {
                 headers: {
                     "Authorization": `Bearer ${localStorage.getItem("token")}`
                 }
@@ -47,7 +47,7 @@ export default function CasesPage() {
 
     const handleViewDetails = async (caseId) => {
         try {
-            const response = await fetch(`${process.env.BASE_URL}/api/cases/${caseId}`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/cases/${caseId}`, {
                 headers: {
                     "Authorization": `Bearer ${localStorage.getItem("token")}`
                 }
@@ -71,7 +71,7 @@ export default function CasesPage() {
         }
 
         try {
-            const response = await fetch(`${process.env.BASE_URL}/api/cases/${searchCaseId}`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/cases/${searchCaseId}`, {
                 headers: {
                     "Authorization": `Bearer ${localStorage.getItem("token")}`
                 }

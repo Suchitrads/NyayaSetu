@@ -37,35 +37,37 @@ const router = express.Router();
 
 router.get('/cases', authenticate, async (req, res) => {
     try {
-        // Get JWT token from Authorization header
         const token = req.headers.authorization?.split(" ")[1];
-        if (!token) return res.status(401).json({ error: "No token provided" });
+        if (!token) {
+            return res.status(401).json({ error: "No token provided" });
+        }
 
-        // Decode JWT to get user info
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
         let cases;
-        if (decoded.role === 'admin') {
-            try {
-                const cases = await Case.find(); // No filter!
-                res.status(200).json(cases);
-            } catch (error) {
-                res.status(500).json({ message: 'Failed to fetch cases', error: error.message });
-            }
+
+        // normalize role
+        const role = decoded.role?.toLowerCase().replace(/\s/g, "");
+
+        if (role === "admin") {
+            // Admin → see ALL cases
+            cases = await Case.find();
         } else {
-            const token = req.headers.authorization?.split(" ")[1];
-        if (!token) return res.status(401).json({ error: "No token provided" });
-
-        // Decode JWT to get officer Aadhaar/ID
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        const officerWallet = decoded.wallet;
-
-            cases = await Case.find({ selectedOfficerWallet: officerWallet });
+            // Officer → only own cases
+            const officerWallet = decoded.wallet;
+            cases = await Case.find({
+                selectedOfficerWallet: officerWallet
+            });
         }
-        res.status(200).json(cases);
+
+        return res.status(200).json(cases);
+
     } catch (error) {
-        console.error('Error fetching cases:', error);
-        res.status(500).json({ message: 'Failed to fetch cases', error: error.message });
+        console.error("Error fetching cases:", error);
+        return res.status(500).json({
+            message: "Failed to fetch cases",
+            error: error.message
+        });
     }
 });
 

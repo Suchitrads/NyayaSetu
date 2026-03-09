@@ -133,11 +133,10 @@ export default function LoginPage() {
     return (
         <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col items-center justify-center p-6">
             <Header />
+
             <ToastContainer />
             <div className="flex flex-col md:flex-row items-center justify-center w-full max-w-6xl h-full mt-10 md:mt-16">
-                <div className="hidden md:flex md:w-1/2 justify-center md:justify-start h-full">
-                    <Image src={loginImage} alt="Login" layout="responsive" className="w-full h-auto max-h-full" />
-                </div>
+              
                 <div className="w-full md:w-1/2 flex items-center justify-center h-full">
                     <Card className="container mx-auto p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg max-w-md mt-12 md:mt-0">
                         <CardHeader className="text-center">
@@ -170,6 +169,9 @@ export default function LoginPage() {
                             </div>
                         </CardContent>
                     </Card>
+                </div>
+                              <div className="hidden md:flex md:w-1/2 justify-center md:justify-start h-full">
+                    <Image src={loginImage} alt="Login" layout="responsive" className="w-full h-auto max-h-full" />
                 </div>
             </div>
             <Footer />
